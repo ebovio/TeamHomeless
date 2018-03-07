@@ -4,19 +4,24 @@ using UnityEngine;
 
 public class detect : MonoBehaviour {
 
-	private int tiempostart;
+    // Materials
+
+    public Material notLooking;
+    public Material looking;
+
+    private int tiempostart;
 	private int bandera;
 
-    public GameObject table;
-    public GameObject basurero;
-    public GameObject cajaRegistradora;
+    public Character player;
 
+    public GameObject phone;
+    public GameObject mailPapers;
 
 	void Start(){
 		tiempostart = 0;
 		bandera = 0;
-
-	}
+        GetComponent<Renderer>().material = notLooking;
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -26,19 +31,6 @@ public class detect : MonoBehaviour {
 
 		if(Physics.Raycast(transform.position,(distancia),out hit)){
 			Debug.DrawLine (transform.position,distancia,Color.red);
-
-            if (hit.collider.gameObject.name == table.name && waitingTime(3))
-            {
-                Debug.Log("I was selected after 3 seconds");
-            }
-            if (hit.collider.gameObject.name == basurero.name && waitingTime(3))
-            {
-                Debug.Log("Do you know the way");
-            }
-            if (hit.collider.gameObject.name == cajaRegistradora.name && waitingTime(3))
-            {
-                Debug.Log("Are you ready?");
-            }
 
         }
         else{
@@ -60,5 +52,15 @@ public class detect : MonoBehaviour {
             return true;
         }
         return false;
+    }
+
+    public void objectBeingWatched()
+    {
+        GetComponent<Renderer>().material = looking;
+    }
+
+    public void objectNotBeingWatched()
+    {
+        GetComponent<Renderer>().material = notLooking;
     }
 }

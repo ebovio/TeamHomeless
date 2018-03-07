@@ -12,33 +12,29 @@ public class Character : MonoBehaviour
     private float distance;
     private bool keepPatrol = true;
 
-
+    Vector3 myPosition;
+    Vector3 nodePosition;
     //Go to bench once
     private bool atBench = false;
 
     // List of ALL Nodes
     public Node[] nodeWorld;
-
-    private float closest;
-    private Node closestNode;
+    
     private Node goingTo;
 
     // Use this for initialization
     void Start()
     {
-        closest = Vector3.Distance(transform.position, nodeWorld[0].transform.position);
-        closestNode = nodeWorld[0];
-        goingTo = patrol[(start) % patrol.Length];
+        goingTo = patrol[start];
     }
 
     // Update is called once per frame
     void Update()
     {
-        goingTo = patrol[(start) % patrol.Length];
         if (keepPatrol)
         {
-            Vector3 myPosition = transform.position;
-            Vector3 nodePosition = patrol[start % patrol.Length].transform.position;
+            myPosition = transform.position;
+            nodePosition = patrol[start].transform.position;
             distance = Vector3.Distance(myPosition, nodePosition);
 
             if (distance < threshold)
@@ -50,14 +46,29 @@ public class Character : MonoBehaviour
             {
                 Vector3 moveDir = (nodePosition - transform.position).normalized;
                 transform.position += moveDir * speed * Time.deltaTime;
-                //transform.LookAt(patrol[(start) % patrol.Length].transform);
-                goingTo = patrol[(start) % patrol.Length];
-                //transform.Translate(transform.forward * Time.deltaTime * speed, Space.World);
+                goingTo = patrol[start];
             }
         }
-        if(goingTo == patrol[patrol.Length])
+        if(goingTo == patrol[patrol.Length-1])
         {
+            Vector3 moveDir = (nodePosition - transform.position).normalized;
+            transform.position += moveDir * speed * Time.deltaTime;
             keepPatrol = false;
         }
+        if(start == 3)
+        {
+            keepPatrol = false;
+            start++;
+        }
+        if (start == 7)
+        {
+            keepPatrol = false;
+            start++;
+        }
+    }
+
+    public void setPatrol(bool patrol)
+    {
+        this.keepPatrol = patrol;
     }
 }
