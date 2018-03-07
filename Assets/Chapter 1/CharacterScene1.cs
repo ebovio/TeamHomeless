@@ -61,11 +61,12 @@ public class CharacterScene1 : MonoBehaviour
             keepPatrol = false;
             start++;
         }
+        /*
         if (start == 7)
         {
             keepPatrol = false;
             start++;
-        }
+        }*/
     }
 
     public void setPatrol(bool patrol)
