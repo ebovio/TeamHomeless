@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Chapter 1/DetectScene1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Menu Inicio/DetectMenu.cs">
     <Files>
-      <File FileName="Assets/Chapter 1/DetectScene1.cs" Line="55" Column="14" />
+      <File FileName="Assets/Menu Inicio/DetectMenu.cs" Line="35" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
