@@ -72,7 +72,7 @@ public class Sounds : MonoBehaviour {
 				if (time2 > 0) {
 					time2 -= Time.deltaTime;
 				} else {
-					SceneManager.LoadScene ("", LoadSceneMode.Additive);					
+					SceneManager.LoadScene ("NewCitybanca", LoadSceneMode.Additive);					
 				}
 
 
