@@ -8,6 +8,7 @@ public class Node : MonoBehaviour
     public Node[] neighbors;
     public List<Node> history;
 
+
     // Use this for initialization
     void Start()
     {
