@@ -55,7 +55,7 @@ public class Character : MonoBehaviour
                 //transform.Translate(transform.forward * Time.deltaTime * speed, Space.World);
             }
         }
-        if(goingTo == patrol[patrol.Length])
+        if(goingTo == patrol[patrol.Length - 1])
         {
             keepPatrol = false;
         }
