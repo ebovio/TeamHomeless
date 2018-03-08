@@ -6,6 +6,7 @@ public class Sounds : MonoBehaviour {
 
 	public AudioSource _AudioSource1;
 	public AudioSource _AudioSource2;
+	public AudioSource _AudioSource3;
 	public Rigidbody rb;
 	public float time =20f;
 
@@ -60,8 +61,12 @@ public class Sounds : MonoBehaviour {
 		{
 
 			isMoving = false;
+
 				if (time <= 0) {
-					_AudioSource2.Stop ();
+					
+					_AudioSource2.Stop();
+					_AudioSource3.Play ();
+					//_AudioSource3.Play();
 				}
 			}
 		}
