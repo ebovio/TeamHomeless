@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/HelloVR.unity
+- path: Assets/Ir_a_banca/NewCitybanca_sentado.unity
   isLoaded: 1
   isActive: 1

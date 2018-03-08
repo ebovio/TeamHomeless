@@ -14,3 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Refugio/Refugio.unity
     guid: 7bf03bfda03a0ed40976c611802457a4
+  - enabled: 1
+    path: Assets/Ir_a_banca/NewCitybanca.unity
+    guid: f169576f44557fd4e97bab81156b0eb1
+  - enabled: 1
+    path: Assets/Ir_a_banca/NewCitybanca_sentado.unity
+    guid: ed425364f65226c4096db09069561136
