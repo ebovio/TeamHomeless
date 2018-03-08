@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/HelloVR.unity
+- path: Assets/Windshields/Windshields.unity
   isLoaded: 1
   isActive: 1

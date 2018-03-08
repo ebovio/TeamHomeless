@@ -12,6 +12,11 @@ public class CharacterW : MonoBehaviour
     public float threshold;
     private float distance;
     private bool keepPatrol = true;
+    public bool coche1, coche2;
+
+
+    Vector3 myPosition;
+    Vector3 nodePosition;
 
 
     //Go to bench once
@@ -30,16 +35,18 @@ public class CharacterW : MonoBehaviour
         closest = Vector3.Distance(transform.position, nodeWorld[0].transform.position);
         closestNode = nodeWorld[0];
         goingTo = patrol[(start) % patrol.Length];
+        coche1 = false;
+        coche2 = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        goingTo = patrol[(start) % patrol.Length];
+
         if (keepPatrol)
         {
-            Vector3 myPosition = transform.position;
-            Vector3 nodePosition = patrol[start % patrol.Length].transform.position;
+            myPosition = transform.position;
+            nodePosition = patrol[start].transform.position;
             distance = Vector3.Distance(myPosition, nodePosition);
 
             if (distance < threshold)
@@ -51,26 +58,40 @@ public class CharacterW : MonoBehaviour
             {
                 Vector3 moveDir = (nodePosition - transform.position).normalized;
                 transform.position += moveDir * speed * Time.deltaTime;
-                //transform.LookAt(patrol[(start) % patrol.Length].transform);
-                goingTo = patrol[(start) % patrol.Length];
-                //transform.Translate(transform.forward * Time.deltaTime * speed, Space.World);
+                goingTo = patrol[start];
             }
         }
-        if(goingTo == patrol[patrol.Length-1])
+        if (goingTo == patrol[patrol.Length - 1])
+        {
+            Vector3 moveDir = (nodePosition - transform.position).normalized;
+            transform.position += moveDir * speed * Time.deltaTime;
+            keepPatrol = false;
+            //StartCoroutine("ChangeLevel");
+
+        }
+        if (start == 10)
         {
             keepPatrol = false;
+            coche1 = true;
+            start++;
         }
-
-        if (goingTo == patrol[10] || goingTo == patrol[12])
+        if (start == 13)
         {
-            StartCoroutine(Espera());
+            keepPatrol = false;
+            coche2 = true;
+            start++;
         }
     }
 
-    IEnumerator Espera()
+    public void setPatrol(bool patrol)
     {
-        speed = 0;
-        yield return new WaitForSeconds(3.0f);
-        speed = 2;
+        this.keepPatrol = patrol;
+    }
+
+    IEnumerator ChangeLevel()
+    {
+        float fadeTime = GameObject.Find("GvrEditorEmulator").GetComponent<fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        //Application.LoadLevel("NewCitybanca");
     }
 }

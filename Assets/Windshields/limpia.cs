@@ -7,6 +7,8 @@ public class limpia : MonoBehaviour {
 	private int tmpstart;
 	private int banderaa;
 
+    public CharacterW player;
+
     public GameObject carro_1;
     public GameObject carro_2;
     public GameObject persona;
@@ -29,15 +31,31 @@ public class limpia : MonoBehaviour {
 
             if (hit.collider.gameObject.name == carro_1.name && waitTime(3))
             {
-                Debug.Log("I was selected after 3 seconds");
+                if (player.coche1)
+                {
+                    Debug.Log("Coche 1");
+                    player.setPatrol(true);
+                }
+                
             }
             if (hit.collider.gameObject.name == carro_2.name && waitTime(3))
             {
-                Debug.Log("Do you know the way");
+                
+                if (player.coche2) {
+                    Debug.Log("Coche 2");
+                    player.setPatrol(true);
+                }
+                
             }
             if (hit.collider.gameObject.name == persona.name && waitTime(3))
             {
-                Debug.Log("Are you ready?");
+                
+                if (!player.coche1 && !player.coche2)
+                {
+                    Debug.Log("Persona");
+                    player.setPatrol(true);
+                }
+               
             }
 
         }
