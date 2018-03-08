@@ -12,6 +12,8 @@ public class DetectScene1 : MonoBehaviour
 
     public GameObject phone;
     public GameObject mailPapers;
+    public GameObject fridgeItem;
+    public GameObject door;
 
     void Start()
     {
@@ -39,6 +41,16 @@ public class DetectScene1 : MonoBehaviour
             if (hit.collider.gameObject.name == mailPapers.name && waitingTime(4))
             {
                 Debug.Log("Fucking debts");
+                player.setPatrol(true);
+            }
+            if (hit.collider.gameObject.name == fridgeItem.name && waitingTime(4))
+            {
+                Debug.Log("I was hungry");
+                player.setPatrol(true);
+            }
+            if (hit.collider.gameObject.name == door.name && waitingTime(4))
+            {
+                Debug.Log("Kicked out of my house");
                 player.setPatrol(true);
             }
 

@@ -20,7 +20,6 @@ public class CharacterScene1 : MonoBehaviour
 
     // List of ALL Nodes
     public Node[] nodeWorld;
-
     private Node goingTo;
 
     // Use this for initialization
@@ -55,22 +54,30 @@ public class CharacterScene1 : MonoBehaviour
             Vector3 moveDir = (nodePosition - transform.position).normalized;
             transform.position += moveDir * speed * Time.deltaTime;
             keepPatrol = false;
+            StartCoroutine("ChangeLevel");
+
         }
         if (start == 3)
         {
             keepPatrol = false;
             start++;
         }
-        /*
-        if (start == 7)
+        if (start == 13)
         {
             keepPatrol = false;
             start++;
-        }*/
+        }
     }
 
     public void setPatrol(bool patrol)
     {
         this.keepPatrol = patrol;
+    }
+
+   IEnumerator ChangeLevel()
+    {
+        float fadeTime = GameObject.Find("GvrEditorEmulator").GetComponent<fading>().BeginFade(1);
+        yield return new WaitForSeconds(fadeTime);
+        Application.LoadLevel("NewCitybanca");
     }
 }
