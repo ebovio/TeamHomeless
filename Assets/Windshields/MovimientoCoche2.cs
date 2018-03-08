@@ -50,7 +50,7 @@ public class MovimientoCoche2 : MonoBehaviour
 			}
 			else
 			{
-				transform.position += moveDir * speed * Time.deltaTime;
+				//transform.position += moveDir * speed * Time.deltaTime;
 				transform.LookAt(patrol[(start) % patrol.Length].transform);
 				goingTo = patrol[(start) % patrol.Length];
 				transform.Translate(transform.forward * Time.deltaTime * speed, Space.World);
