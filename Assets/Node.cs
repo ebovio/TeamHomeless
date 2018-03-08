@@ -28,12 +28,12 @@ public class Node : MonoBehaviour
             Gizmos.DrawLine(transform.position, neighbors[i].transform.position);
         }
         Gizmos.color = Color.cyan;
-        Gizmos.DrawSphere(transform.position, 0.5f);
+        Gizmos.DrawSphere(transform.position, 0.08f);
     }
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, 0.5f);
+        Gizmos.DrawSphere(transform.position, 0.08f);
     }
 }
