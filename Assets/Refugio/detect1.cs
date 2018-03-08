@@ -28,6 +28,7 @@ public class detect1 : MonoBehaviour {
             if (hit.collider.gameObject.name == puerta.name && waitingTime(3))
             {
                 Debug.Log("I was selected after 3 seconds");
+				StartCoroutine ("ChangeLevel");
             }
 
         }
@@ -36,6 +37,16 @@ public class detect1 : MonoBehaviour {
 			bandera = 0;
 		}
 	}
+
+
+	IEnumerator ChangeLevel(){
+		print ("corutina empezo");
+		float fadeTime = GameObject.Find ("GvrEditorEmulator").GetComponent<fading> ().BeginFade (1);
+		yield return new WaitForSeconds (fadeTime);
+		Application.LoadLevel ("Dormir");
+		print ("corrutina termino");
+	}
+
 
     public bool waitingTime(int wait)
     {
