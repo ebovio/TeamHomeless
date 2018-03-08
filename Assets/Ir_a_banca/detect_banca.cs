@@ -36,15 +36,15 @@ public class detect_banca : MonoBehaviour {
             }
 			if (hit.collider.gameObject.name == Limpiar.name && waitingTime(3))
 			{
-                Application.LoadLevel("NewCitybanca_sentado");
+                Application.LoadLevel("Windshields");
             }
             if (hit.collider.gameObject.name == BuscarComida.name && waitingTime(3))
             {
-                Application.LoadLevel("NewCitybanca_sentado");
+                Application.LoadLevel("buscar_comida");
             }
             if (hit.collider.gameObject.name == BuscarRefugio.name && waitingTime(3))
             {
-                Application.LoadLevel("NewCitybanca_sentado");
+                Application.LoadLevel("Refugio");
             }
         }
 		else{
