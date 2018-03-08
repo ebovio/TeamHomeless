@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sounds : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Sounds : MonoBehaviour {
 	public AudioSource _AudioSource3;
 	public Rigidbody rb;
 	public float time =20f;
+	public float time2 =5f;
 
 	public Transform objectTransform;
 	private float noMovementThreshold = 0.0001f;
@@ -62,12 +64,19 @@ public class Sounds : MonoBehaviour {
 
 			isMoving = false;
 
-				if (time <= 0) {
-					
-					_AudioSource2.Stop();
-					_AudioSource3.Play ();
-					//_AudioSource3.Play();
+			if (time <= 0) {
+				_AudioSource2.Stop();
+				_AudioSource3.Play ();
+				//_AudioSource3.Play();
+			}
+				if (time2 > 0) {
+					time2 -= Time.deltaTime;
+				} else {
+					SceneManager.LoadScene ("", LoadSceneMode.Additive);					
 				}
+
+
+
 			}
 		}
 	}
